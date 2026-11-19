@@ -498,8 +498,8 @@ $("#kop").addEventListener("click", async () => {
   const linjer = side => Object.entries(antal[side]).map(([i, n]) => `  ${n} × ${DATA[side][i].navn} = ${fmt(n * DATA[side][i].pris)}`);
   const s = sum("salg"), k = sum("koeb"), d = s - k, ls = linjer("salg"), lk = linjer("koeb");
   const txt = ["**Ashes Before Dawn · Trader receipt**",
-    "Selling:", ...(ls.length ? ls : ["  –"]), `  Total: ${fmt(s)}`,
-    "Buying:", ...(lk.length ? lk : ["  –"]), `  Total: ${fmt(k)}`,
+    "**Selling:**", ...(ls.length ? ls : ["  –"]), `  Total: ${fmt(s)}`,
+    "**Buying:**", ...(lk.length ? lk : ["  –"]), `  Total: ${fmt(k)}`,
     d > 0 ? `**Trader pays ${fmt(d)}**` : d < 0 ? `**Player pays ${fmt(-d)}**` : "**Even trade**"].join("\n");
   const b = $("#kop");
   try { await navigator.clipboard.writeText(txt); b.textContent = "Copied!"; }
